@@ -12,6 +12,8 @@ router.use('/', express.static(__dirname + ''));
 var path = require('path');
 var db;
 
+
+
 /* Connecting with Mongo DB */
 mongoClient.connect('mongodb://localhost:27017/farmersowndb', (err, database)=>{
     if(err){
