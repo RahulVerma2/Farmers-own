@@ -1,0 +1,8 @@
+Cart Section
+
+<div *ngFor="let vegetable of vegetableList; let i = index">
+    <div>
+      {{i}} -  Vegetable : {{ vegetable.name }},  Rate : {{ vegetable.age }}
+      Qty: {{ vegetable.qty }} price: {{ vegetable.age * vegetable.qty }}
+    </div>
+</div>

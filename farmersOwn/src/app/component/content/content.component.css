@@ -1,0 +1,59 @@
+
+.vegetable-image{
+    background: url(/assets/images/potato.jpg) no-repeat;
+    width: 100%;
+    height: 97px;
+    background-size: contain;
+}  
+
+.vegetable-detail div{
+    margin-bottom: 5px;
+}
+
+
+.name-section label{
+    display:block;
+    text-align: center;
+    font-size: 22px;
+    color: #f3bd1e;
+}
+
+
+.rate-section label, .cost-section label, .qty-section label{
+   color: #b27a66;
+}
+
+.rate-section span, .cost-section span{
+    float:right;
+    font-weight: bold;
+}
+
+.qty-section input{
+    width: 70px;
+    box-shadow: 0px 2px 6px grey inset;
+    text-align: center;
+    font-weight: bold;
+    float: right;
+}
+
+mat-card{
+    background: #fff;
+    margin:20px auto;
+}
+
+mat-card-actions{
+    text-align: center;
+}
+
+mat-card-content{
+    margin-bottom: 0px;
+}
+
+.add-to-cart-button{
+    background: #85c919;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    box-shadow: 2px 2px 8px grey;
+    padding: 10px;
+}
