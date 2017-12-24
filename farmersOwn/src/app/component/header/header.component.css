@@ -2,19 +2,18 @@
     background-color: #f6f6f6;
 }
 .header .logo{
-    background: url('/assets/images/logo.jpg') no-repeat;
-    width:100%;
-    height:81px;
+    background: url(/assets/images/logo.jpg) no-repeat;
+    width: 100%;
+    height: 75px;
     background-size: contain;
-    margin: 10px 0 10px 35px;
+    margin: 10px 0 0 35px;
 }
 
 .header header{
-    font-size: 51px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: capitalize;
-    text-align: center;
-    margin-top: 12px;
+    margin-left: 20px;
 }
 
 .header header span:nth-child(1){
@@ -31,15 +30,34 @@
 }
 
 .header .sign-in-button{
-    font-size: 24px;
-    color: #cc6731;
+    font-size: 17px;
     text-align: center;
     box-shadow: 2px 6px 19px #5a6365;
-    width: 50%;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 18px;
     cursor: pointer;
-    border-radius: 5px;
+    color: #fff;
+    background-color: #85c919;
+    padding: 8px;
+    width: max-content;
+}
+
+.header .your-cart-button{
+    text-align: center;
+    font-size: 18px;
+    text-decoration: underline;
+    margin: auto;
+    margin-top: 16px;
+    cursor: pointer;
+    color: #85c919;
+    padding: 8px;
+    
+}
+.header .your-cart-button:hover{
+    text-shadow: 1px 1px 1px #5a6365;
+}
+.header .your-cart-button span{
+    display: inline-block
 }
 .header .sign-in-button:hover{
     box-shadow: 1px 1px 1px #5a6365;

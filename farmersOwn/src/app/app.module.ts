@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }  from '@angular/forms';
 import {HttpModule} from '@angular/http';
-
+import { routes } from './app.router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule, MatFormFieldModule } from '@angular/material';
@@ -36,6 +36,7 @@ import { Subject } from 'rxjs/Subject';
     BrowserModule,
     FormsModule,
     HttpModule,
+    routes,
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,

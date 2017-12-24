@@ -33,7 +33,6 @@ mongoClient.connect('mongodb://localhost:27017/farmersowndb', (err, database)=>{
 // To retrieve all the items in the DB.
 // Collections used - GET_ITEMS.
 router.get('/getItems', function(req, res){
-    sendMail();
     var itemDetails = db.collection('itemDetails');
     itemDetails.find().toArray(function(err, docs) {
         var itemArray = [];

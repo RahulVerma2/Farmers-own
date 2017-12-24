@@ -1,8 +1,55 @@
-Cart Section
+<div class="row" style="margin-right:0px">
+  <div class="col-sm-9">
+    <header>
+      Your Current Cart
+    </header>
+    <div class="cart-list-container">
+      <div *ngFor="let item of cartList; let i = index">
+        <div class="row">
+          <!-- Item  Image -->
+          <div class="col-sm-2">
+            <div class="sprite {{item.itemName}}">
 
-<div *ngFor="let vegetable of vegetableList; let i = index">
-    <div>
-      {{i}} -  Vegetable : {{ vegetable.name }},  Rate : {{ vegetable.age }}
-      Qty: {{ vegetable.qty }} price: {{ vegetable.age * vegetable.qty }}
+            </div>
+          </div>
+          <div class="col-sm-3">
+            {{ item.itemName }}
+          </div>
+          <div class="col-sm-2">
+            {{ item.itemQty }} {{ item.itemUnit }}
+          </div>
+
+          <div class="col-sm-2">
+            {{ item.itemPrice }}/{{ item.itemUnit }}
+          </div>
+
+          <div class="col-sm-2">
+            {{ item.itemQty * item.itemPrice }}
+          </div>
+
+        </div>
+      </div>
     </div>
+
+  </div>
+
+  <div class="col-sm-3">
+    <div class="cart-detail-container">
+
+
+      <div>
+        <label class="total-header">
+        Total Amount
+      </label>
+        <label class="total-value">
+        300
+      </label>
+
+      </div>
+      <div>
+        <button class="checkout-button">Proceed to checkout</button>
+      </div>
+    </div>
+  </div>
+
 </div>

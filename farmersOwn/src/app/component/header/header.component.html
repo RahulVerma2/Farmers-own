@@ -1,26 +1,37 @@
 <div class="header">
 
   <!-- Logo -->
-  <div class="row">
+  <div class="row" style="margin-right:0px;">
     <div class="col-lg-2">
-      <div class="logo">
+      <div class="logo" [routerLink]="['content']" style="cursor:pointer;">
 
+      </div>
+      <div>
+        <header>
+          <label [routerLink]="['content']" style="cursor:pointer;">
+            <span>Farmer's</span>
+            <span>Own</span>
+          </label>
+        </header>
       </div>
     </div>
 
     <!-- Title -->
-    <header class="col-lg-8">
-      <label>
-        <span>Farmer's</span>
-        <span>Own</span>
-      </label>
-    </header>
+    <div class="col-lg-8">
+
+    </div>
 
     <!-- Sign In Option -->
     <div class="col-lg-2">
       <div class="sign-in-button">
         Sign In
       </div>
+      <div class="your-cart-button"> 
+        <span [routerLink]="['cart']">Your Cart</span> <span class="glyphicon glyphicon-shopping-cart"></span>
+      </div>
+     
+      
+      
 
     </div>
 
