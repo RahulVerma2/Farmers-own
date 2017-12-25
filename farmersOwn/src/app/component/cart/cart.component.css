@@ -1,9 +1,34 @@
 .cart-list-container{
     width: 95%;
     margin: auto;
+    box-shadow: 1px 1px 15px grey;
+    min-height: 500px;
+    background-color: white;
+}
+
+.cart-list-container header{
+    text-align: center;
+    font-size: 26px;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    padding: 30px;
+    color: #85c919;
 }
 
 .cart-list-container .row{
+    text-align: center;
+    color: #888888;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #eeeeee;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.cart-list-container .row .col-sm-*{
+    border-right: 1px solid #eeeeee;
 }
 
 

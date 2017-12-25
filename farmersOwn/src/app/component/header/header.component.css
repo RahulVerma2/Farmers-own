@@ -62,3 +62,35 @@
 .header .sign-in-button:hover{
     box-shadow: 1px 1px 1px #5a6365;
 }
+
+.header .navigation-menu-bar{
+    background-color: #85c919;
+    height: 31px;
+    opacity: 0.7;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+    
+}
+
+.header .navigation-menu-bar div{
+    display: inline-block;
+    width: 20%;
+    text-decoration: underline;
+    text-align: center;
+    border-right: 1px solid #eeeeee;
+    cursor: pointer;
+    height: 31px;
+}
+
+.header .navigation-menu-bar div:nth-child(3){
+    float: right;
+    border-right: none;
+}
+
+.header .navigation-menu-bar div:hover{
+    color: #85c919;
+    background-color: white;
+}
+
+

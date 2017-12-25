@@ -6,19 +6,19 @@
       <div class="logo" [routerLink]="['content']" style="cursor:pointer;">
 
       </div>
-      <div>
-        <header>
-          <label [routerLink]="['content']" style="cursor:pointer;">
-            <span>Farmer's</span>
-            <span>Own</span>
-          </label>
-        </header>
-      </div>
+
     </div>
 
     <!-- Title -->
     <div class="col-lg-8">
-
+      <div>
+        <header>
+          <label [routerLink]="['content']" style="cursor:pointer;">
+                <span>Farmer's</span>
+                <span>Own</span>
+              </label>
+        </header>
+      </div>
     </div>
 
     <!-- Sign In Option -->
@@ -26,15 +26,28 @@
       <div class="sign-in-button">
         Sign In
       </div>
-      <div class="your-cart-button"> 
-        <span [routerLink]="['cart']">Your Cart</span> <span class="glyphicon glyphicon-shopping-cart"></span>
+      <div class="your-cart-button">
+        
       </div>
-     
-      
-      
+
+
+
 
     </div>
 
   </div>
 
+  <!-- Navigation Menu -->
+  <div class="navigation-menu-bar"> 
+     <div [routerLink]="['content']">
+       Vegetable List
+      </div> 
+      
+      <div  [routerLink]="['content']">
+          Your Orders
+      </div>
+      <div [routerLink]="['cart']">
+          <span>Your Cart</span> <span class="glyphicon glyphicon-shopping-cart"></span>
+      </div>
+  </div>
 </div>
