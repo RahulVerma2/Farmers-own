@@ -25,6 +25,24 @@ export class ContentServiceService {
     return this.cartList;
   }
 
+  getCartTotal(){
+    let totalAmount = 0;
+    this.cartList.forEach(element => {
+      totalAmount = totalAmount + (element.itemQty * element.itemPrice);
+    });
+    return totalAmount;
+  }
+
+  proceedToCheckout(){
+    var userDetail = JSON.parse(localStorage.getItem("userDetail"));
+    if(userDetail == null){
+      return false;
+    }
+    else{
+      return userDetail;
+    }
+  }
+
  
 
   // Add items to cart.

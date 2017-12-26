@@ -64,12 +64,13 @@
         Total Amount
       </label>
         <label class="total-value">
-        300
+        {{ totalAmount }}
+
       </label>
 
       </div>
       <div>
-        <button class="checkout-button">Proceed to checkout</button>
+        <button class="checkout-button" (click)="proceedToCheckout()">Proceed to checkout</button>
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@
     margin-right: 0px;
 }
 
-.cart-list-container .row .col-sm-*{
+.cart-list-container .row {
     border-right: 1px solid #eeeeee;
 }
 
@@ -66,4 +66,8 @@
     width: -moz-max-content;
     width: max-content;
     border: none;
+}
+
+.cart-detail-container .checkout-button:hover{
+    box-shadow: 1px 1px 1px #5a6365;
 }

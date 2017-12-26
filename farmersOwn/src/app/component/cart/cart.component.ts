@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ContentServiceService} from '../../service/content-service.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +11,24 @@ import {ContentServiceService} from '../../service/content-service.service'
 export class CartComponent implements OnInit {
 
   cartList= [];
+  totalAmount = 0;
 
-  constructor(private contentServiceService: ContentServiceService) { }
+  constructor(private contentServiceService: ContentServiceService, private router: Router) { }
+
+  proceedToCheckout(){
+    debugger;
+    var currentUser = this.contentServiceService.proceedToCheckout();
+    if(currentUser){
+
+    }
+    else{
+      this.router.navigateByUrl('/login');
+    }
+  }
   
   ngOnInit() {
     this.cartList = this.contentServiceService.getCartList();
+    this.totalAmount = this.contentServiceService.getCartTotal();
     // this.contentServiceService.newVegetableSubject.subscribe(
       
     //   data => {
