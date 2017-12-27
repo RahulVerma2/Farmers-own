@@ -6,7 +6,7 @@ import { routes } from './app.router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule, MatFormFieldModule } from '@angular/material';
-import { MatInputModule } from '@angular/material/Input';
+import { MatInputModule } from '@angular/material/input';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { ContentServiceService } from './service/content-service.service';
 
 import { Subject } from 'rxjs/Subject';
+import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { Subject } from 'rxjs/Subject';
     HeaderComponent,
     FooterComponent,
     CartComponent,
+    OrderConfirmationComponent,
    
   ],
   imports: [

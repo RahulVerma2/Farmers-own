@@ -1,4 +1,4 @@
-var express = require("Express");
+var express = require("express");
 var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
 
@@ -95,13 +95,12 @@ router.post('/placeOrder', function(req, res){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     orderDetails.insertOne( {
-        username : req.body.username,
         name : req.body.name,
         phone : req.body.phone,
         address : req.body.address,
         itemList : req.body.itemList,
         email : req.body.email,
-        deliveryTime : req.body.deliveryTime,
+        deliveryTime : "evening",
         orderId : currentTime,
         currentStatus : "Undelivered"
 
@@ -298,19 +297,22 @@ router.post('/login', function(req, res) {
     var user = db.collection('login');
     user.find({'username': req.body.username}).toArray(function(err, docs) {
         var userObject = docs[0];
-        console.log(docs[0]);
         if(userObject){
             if(userObject.password == req.body.password){
                 console.log("Password match");
-                res.send({msg:"Login Success"});
+                var memberDetails = db.collection('memberDetails');
+                memberDetails.find({'email': req.body.username}).toArray(function(err, docs) {
+                    var details = docs[0];
+                    console.log(docs[0]);
+                    res.send({msg: docs[0]});
+                });
+                
             }
             else{
-                console.log("Password not match");
                 res.send({msg:"Password not match"});
             }
         }
         else{
-            console.log("Data Not Found");
             res.send({msg:"Invalid Credential"});
         }
     });

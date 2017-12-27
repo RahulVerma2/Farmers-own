@@ -16,10 +16,9 @@ export class CartComponent implements OnInit {
   constructor(private contentServiceService: ContentServiceService, private router: Router) { }
 
   proceedToCheckout(){
-    debugger;
     var currentUser = this.contentServiceService.proceedToCheckout();
     if(currentUser){
-
+      this.router.navigateByUrl('/orderConfirmation');
     }
     else{
       this.router.navigateByUrl('/login');

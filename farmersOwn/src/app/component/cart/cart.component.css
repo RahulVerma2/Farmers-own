@@ -9,7 +9,6 @@
 .cart-list-container header{
     text-align: center;
     font-size: 26px;
-    /* font-weight: bold; */
     text-transform: uppercase;
     padding: 30px;
     color: #85c919;
@@ -17,20 +16,19 @@
 
 .cart-list-container .row{
     text-align: center;
-    color: #888888;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 23px;
     border-bottom: 1px solid #eeeeee;
     padding-left: 0px;
     padding-right: 0px;
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.cart-list-container .row {
     border-right: 1px solid #eeeeee;
 }
 
+.cart-list-container .cart-item-list .border-right{
+    padding-top: 20px;
+    font-size: 18px;
+}
 
 .cart-detail-container{
     padding-top: 30px;

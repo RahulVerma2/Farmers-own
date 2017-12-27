@@ -19,10 +19,10 @@ password:string;
 
  signIn(){
   this.login(this.username, this.password).subscribe(response => {
-    console.log(response.msg);
-    /*if(response.msg=="Login Success"){
-      this._router.navigate(['/dashboard']);
-    }*/
+    if(typeof (response.msg) == "object"){
+      localStorage.setItem("userDetail",JSON.stringify(response.msg));
+    }
+    
   });
  }
 
