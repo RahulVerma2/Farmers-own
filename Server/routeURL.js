@@ -318,6 +318,44 @@ router.post('/login', function(req, res) {
     });
 });
 
+
+// Handling the POST request to register.
+// To register a new user.
+// Collections used - LOGIN, MEMBERDETAILS.
+router.post('/register', function(req, res) {
+    console.log(req.body);
+    var memberDetails = db.collection('memberDetails');
+    memberDetails.find({'email': req.body.email}).toArray(function(err, docs) {
+        var obj = docs[0];
+        if(obj){
+            res.send({msg:"Member with same detail is already present"});
+        }
+        else{
+            memberDetails.insertOne( {
+                name : req.body.name,
+                email : req.body.email,
+                phone : req.body.phone,
+                status : "unverified"
+            }, function(err, result) {
+                res.send({msg:'unable to register'});
+            });
+
+            var login = db.collection('login');
+            login.insertOne({
+                username : req.body.email,
+                password : req.body.password,
+            }, function(err, result) {
+                res.send({msg:'unable to register'});
+            });
+           
+        }
+        res.send({msg:'A verification mail has been send to the given email.'});
+       
+    });
+});
+
+
+
 // Send Email
 
 function sendMail(){

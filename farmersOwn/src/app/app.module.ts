@@ -21,6 +21,8 @@ import { ContentServiceService } from './service/content-service.service';
 
 import { Subject } from 'rxjs/Subject';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
+import { RegisterComponent } from './component/register/register.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { OrderConfirmationComponent } from './component/order-confirmation/order
     FooterComponent,
     CartComponent,
     OrderConfirmationComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
    
   ],
   imports: [

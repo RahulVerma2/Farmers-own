@@ -1,0 +1,31 @@
+<div class="register-page">
+
+  <div class="header">
+    Register yourself
+  </div>
+
+  <div>
+    <input type="text" [(ngModel)]="registerDetail.name" placeholder="name" />
+  </div>
+
+  <div>
+    <input type="text" [(ngModel)]="registerDetail.phone" placeholder="phone number" />
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="registerDetail.email" placeholder="email" />
+  </div>
+  <div>
+    <input type="password" [(ngModel)]="registerDetail.password" placeholder="password" />
+  </div>
+  <div>
+    <input type="password" [(ngModel)]="registerDetail.confirmPassword" placeholder="confirm password" />
+  </div>
+  <div>
+    <button type="submit" (click)="register()">Sign Up</button>
+  </div>
+
+  <div>
+    <a href="login">Already a member? Login</a>
+  </div>
+
+</div>

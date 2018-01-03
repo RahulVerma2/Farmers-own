@@ -1,4 +1,30 @@
-<input type="text" [(ngModel)]="username" placeholder="Register email address"/>
-<input type="password" [(ngModel)]="password"  placeholder="Password"/>
-<button type="submit" (click)="signIn()">Sign In</button>
+<div class="login-page">
+
+    <div class="header">
+        Sign in yourself
+    </div>
+
+    <div>
+            <input type="text" [(ngModel)]="username" placeholder="email or phone number"/>
+    </div>
+    <div>
+            <input type="password" [(ngModel)]="password"  placeholder="password"/>
+    </div>
+    <div>
+            <button type="submit" (click)="signIn()">Sign In</button>
+    </div>
+        
+        
+        
+    <div>
+        <a  href="forgotPassword">Forgot Password</a>
+    </div>
+
+    <div>
+        <a  href="register" >Not a member? Register yourself</a>
+    </div>
+
+</div>
+
+
 
