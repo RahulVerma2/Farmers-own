@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ContentServiceService} from '../../service/content-service.service'
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -10,7 +13,7 @@ export class OrderConfirmationComponent implements OnInit {
 
   addressDetail = {};
 
-  constructor(private contentServiceService: ContentServiceService) { }
+  constructor(private contentServiceService: ContentServiceService, private http: Http, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +24,27 @@ export class OrderConfirmationComponent implements OnInit {
     userDetail.itemList = this.contentServiceService.getCartList();
     userDetail.address = [];
     userDetail.address.push(this.addressDetail);
+    this.placeorder2(userDetail).subscribe(response => {
+      if(response.msgCode == 200){
+        this.contentServiceService.latestOrderId = response.orderId;
+        this.router.navigateByUrl('trackOrder');
+      }
+    })
+    
+  }
+
+  placeorder2(userDetail){
+    var obj = {
+      name : userDetail.name,
+      phone : userDetail.phone,
+      address : userDetail.address,
+      itemList : userDetail.itemList,
+      email : userDetail.email,
+    }
+
+     return this.http.post('http://localhost:3000/placeOrder', obj)
+    .map(response => response.json());
+
   }
 
 }

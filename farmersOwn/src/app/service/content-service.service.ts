@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class ContentServiceService {
 
 
-  
+  public latestOrderId;  
   public newVegetableSubject = new Subject<any>();
   private cartList = [];
   private vegetableList = [];

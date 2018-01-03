@@ -90,7 +90,8 @@ router.post('/updateItems', function(req, res){
 // To place a new order in the DB.
 // Collections used - PLACE_ORDER.
 router.post('/placeOrder', function(req, res){
-    
+    console.log('hitted')
+    console.log(req.body)
     var orderDetails = db.collection('orderDetails');
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
@@ -100,14 +101,14 @@ router.post('/placeOrder', function(req, res){
         address : req.body.address,
         itemList : req.body.itemList,
         email : req.body.email,
-        deliveryTime : "evening",
         orderId : currentTime,
+        orderDate : currentDate,
         currentStatus : "Undelivered"
 
     }, function(err, result) {
         
     });
-    res.send("your orderId is "+ currentTime);
+    res.send({orderId: currentTime, msgCode: 200});
 });
 
 // Handling an GET request.
@@ -123,6 +124,32 @@ router.get('/getAllOrders', function(req, res){
             orderArray.push(order);
         }
         res.send(orderArray);
+    })
+});
+
+// Handling an GET request.
+// To retrieve all new order from DB.
+// Collections used - ORDER_DETAILS.
+router.get('/trackOrder', function(req, res){
+    console.log(req.query);
+    var orderDetails = db.collection('orderDetails');
+    orderDetails.find({email : req.query.email}).toArray(function(err, docs) {
+        var orderArray = [];
+        for(var i = 0; i< docs.length; i++){
+            var d = new Date(docs[i].orderDate);
+            var date = d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear();
+            var order = {
+                orderId : docs[i].orderId,
+                orderDate : date,
+                address : docs[i].address,
+                currentStatus : docs[i].currentStatus
+            }
+            
+            orderArray.push(order);
+            console.log(order);
+        }
+        
+        res.send({orderList : orderArray, msgCode : 200});
     })
 });
 

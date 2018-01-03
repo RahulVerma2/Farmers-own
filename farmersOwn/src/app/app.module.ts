@@ -23,6 +23,7 @@ import { Subject } from 'rxjs/Subject';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { TrackOrderComponent } from './component/track-order/track-order.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     OrderConfirmationComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    TrackOrderComponent,
    
   ],
   imports: [

@@ -6,7 +6,7 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
-
+import { TrackOrderComponent } from './component/track-order/track-order.component';
 
 const appRoutes: Routes = [
     {
@@ -37,6 +37,10 @@ const appRoutes: Routes = [
     {
         path: 'forgotPassword',
         component: ForgotPasswordComponent
+    },
+    {
+        path: 'trackOrder',
+        component: TrackOrderComponent
     }
 
     
