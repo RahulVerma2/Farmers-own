@@ -8,44 +8,47 @@ import {ContentServiceService} from '../../service/content-service.service'
 
 })
 export class ContentComponent implements OnInit {
-
   
   vegetableList = [];
-  cartList = [];
-  
+  cartList =[];
+
   constructor(private contentServiceService: ContentServiceService) { }
 
   ngOnInit() {
-    console.log("component");
+    debugger;
+    if(this.contentServiceService.getVegetableList().length == 0){
+      this.contentServiceService.getItemList().subscribe( res =>{
+        this.vegetableList = res;
+        this.contentServiceService.setItemList(this.vegetableList);
+      });
+    }else{
+      this.vegetableList = this.contentServiceService.getVegetableList();
+    }
+    
     this.cartList = this.contentServiceService.getCartList();
-    this.contentServiceService.getItemList().subscribe( res =>{
-      this.vegetableList = res;
-    })
+
     this.contentServiceService.newVegetableSubject.subscribe(
-      
       data => {
-        if(data.action ==="add"){
+        debugger;
+        var index = this.cartList.indexOf(data);
+        if(index>-1){
+          this.cartList[index] = data;
+        }
+        else{
           this.cartList = [data, ...this.cartList];
         }
-        else if(data.action ==="remove"){
-
-          //We will remove the vegetable
-          
-        }
-
-
+        
       }
     )
   }
   
   addToCart(vegetable){
-    vegetable.action = "add";
     this.contentServiceService.addToCart(vegetable);
   }
 
   removeItemFromCartList(vegetable){
-    vegetable.action = "remove";
-    this.contentServiceService.addToCart(vegetable);
+    this.cartList.splice(this.cartList.indexOf(vegetable),1);
+    this.contentServiceService.removeFromCart(vegetable);
   }
 
  

@@ -19,7 +19,6 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   placeOrder(){
-    debugger;
     var userDetail = JSON.parse(localStorage.getItem("userDetail"));
     userDetail.itemList = this.contentServiceService.getCartList();
     userDetail.address = [];
