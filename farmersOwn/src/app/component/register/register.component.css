@@ -24,6 +24,16 @@
     background-color: #e5edd9;
 }
 
+.register-page .error_message{
+    color: red;
+    font-weight: bold;
+}
+
+.register-page .success_message{
+    color: green;
+    font-weight: bold;
+}
+
 .register-page button{
     font-size: 17px;
     text-align: center;

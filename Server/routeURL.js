@@ -326,21 +326,20 @@ router.post('/login', function(req, res) {
         var userObject = docs[0];
         if(userObject){
             if(userObject.password == req.body.password){
-                console.log("Password match");
                 var memberDetails = db.collection('memberDetails');
                 memberDetails.find({'email': req.body.username}).toArray(function(err, docs) {
                     var details = docs[0];
                     console.log(docs[0]);
-                    res.send({msg: docs[0]});
+                    res.send({msg: docs[0], msgCode:200});
                 });
                 
             }
             else{
-                res.send({msg:"Password not match"});
+                res.send({msg:"Please enter a valid credential", msgCode:100});
             }
         }
         else{
-            res.send({msg:"Invalid Credential"});
+            res.send({msg:"Please enter a valid credential",msgCode:100});
         }
     });
 });
@@ -364,28 +363,96 @@ router.post('/register', function(req, res) {
                 phone : req.body.phone,
                 status : "unverified"
             }, function(err, result) {
-                res.send({msg:'unable to register'});
+                if(err){
+                    res.send({msg:'unable to register'});
+                }
+                else{
+                    enterLoginDetail()
+                }
+                
             });
 
-            var login = db.collection('login');
-            login.insertOne({
-                username : req.body.email,
-                password : req.body.password,
-            }, function(err, result) {
-                res.send({msg:'unable to register'});
-            });
-           
+            function enterLoginDetail(){
+                var login = db.collection('login');
+                login.insertOne({
+                    username : req.body.email,
+                    password : req.body.password,
+                }, function(err, result) {
+                    if(err){
+                        res.send({msg:'unable to register'});
+                    }
+                    else{
+                        res.send({msgCode:200,msg:"Your account has been successfully registered. Please Sign In your self to continue."})
+                    }
+                });
+            }
         }
-        res.send({msg:'A verification mail has been send to the given email.'});
-       
+    });
+});
+
+
+// Handling the POST request to register.
+// To register a new user.
+// Collections used - LOGIN, MEMBERDETAILS.
+router.post('/generateOTP', function(req, res) {
+    console.log(req.body);
+    var otp = Math.floor(Math.random() * 100000);
+    var currentDate = new Date();
+    var currentTime = currentDate.getTime();
+    var verifyUser = db.collection('userVerification');
+    verifyUser.insertOne( {
+        phone : req.body.phone,
+        email : req.body.email,
+        otp : otp,
+        otpCreationDate : currentTime
+    }, function(err, result){
+        if(err){
+            res.send({msg:"Some Error Occured while genetaring OTP. Please register again."});
+        }
+        else{
+            var obj = {
+                sendTo : req.body.email,
+                msg : "<b>Hello "+req.body.name+"</b><br><br><p>Your OTP for regestring as Farmer's Own member is <b>"+
+                       otp+"<b></p>.'" ,
+                subject : "OTP for Registering to Farmer's Own"       
+            }
+            sendMail(obj);
+            res.send({msgCode:200, msg:'Please Enter the OTP sent to the given email ID'});
+        }
     });
 });
 
 
 
+
+// Handling the POST request to register.
+// To register a new user.
+// Collections used - LOGIN, MEMBERDETAILS.
+router.post('/confirmOTP', function(req, res) {
+    var verifyUser = db.collection('userVerification');
+    verifyUser.find({'email': req.body.email}).toArray(function(err, docs) {
+        var obj = docs[0];
+        if(obj){
+            if(obj.otp == req.body.otp){
+                res.send({msgCode:200,msg:"Correct OTP"});
+            }
+            else{
+                res.send({msg:"OTP entered is wrong."});
+            }
+        }
+        else{
+            res.send({msg:"OTP entered is wrong."});
+        }
+        
+    });
+});
+
+
+
+
 // Send Email
 
-function sendMail(){
+function sendMail(mailDetail){
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
@@ -402,10 +469,9 @@ function sendMail(){
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"Rahul Verma" <rahul.v.140389@gmail.com>', // sender address
-        to: 'rahulverma140389@gmail.com', // list of receivers
-        subject: 'Sample test mail', // Subject line
-        text: 'Hello world?', // plain text body
-        html: '<b>Hello Rahul</b>' // html body
+        to: mailDetail.sendTo, // list of receivers
+        subject: mailDetail.subject, // Subject line
+        html: mailDetail.msg // html body
     };
 
      // send mail with defined transport object

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +11,22 @@ import 'rxjs/add/operator/map';
 export class LoginComponent implements OnInit {
 
   username : string;
-
-password:string;
-  constructor(private http: Http) { }
+  password:string;
+  errorMsg ="";
+  constructor(private http: Http, private router:Router) { }
 
   ngOnInit() {
   }
 
  signIn(){
   this.login(this.username, this.password).subscribe(response => {
-    if(typeof (response.msg) == "object"){
+    if(response.msgCode === 200){
       localStorage.setItem("userDetail",JSON.stringify(response.msg));
+      this.errorMsg = ""
+      this.router.navigateByUrl("content");
+    }
+    else{
+      this.errorMsg = response.msg
     }
     
   });

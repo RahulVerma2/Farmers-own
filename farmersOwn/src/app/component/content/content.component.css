@@ -11,6 +11,14 @@
     padding-left: 30px;
 }
 
+.menu-section .information{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #0b6db8;
+}
+
 .vegetable-detail div{
     margin-bottom: 5px;
 }

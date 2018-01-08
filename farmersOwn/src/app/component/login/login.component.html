@@ -10,6 +10,9 @@
     <div>
             <input type="password" [(ngModel)]="password"  placeholder="password"/>
     </div>
+    <div class="error_message">
+        {{errorMsg}}
+    </div>
     <div>
             <button type="submit" (click)="signIn()">Sign In</button>
     </div>

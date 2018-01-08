@@ -24,6 +24,11 @@
     background-color: #e5edd9;
 }
 
+.login-page .error_message{
+    color: red;
+    font-weight: bold;
+}
+
 .login-page button{
     font-size: 17px;
     text-align: center;

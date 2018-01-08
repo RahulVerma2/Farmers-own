@@ -1,39 +1,76 @@
 <div class="register-page">
-
-  <div class="header">
-    Register yourself
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6">
-      <div>
-        <input type="text" [(ngModel)]="registerDetail.name" placeholder="name" />
-      </div>
-      <div>
-        <input type="text" [(ngModel)]="registerDetail.phone" placeholder="phone number" />
-      </div>
-
-      <div>
-        <input type="text" [(ngModel)]="registerDetail.email" placeholder="email" />
-      </div>
-
+  <div [hidden]="!showRegister">
+    <div class="header">
+      Register yourself
     </div>
 
-    <div class="col-lg-6">
-      <div>
-        <input type="password" [(ngModel)]="registerDetail.password" placeholder="password" />
+    <div class="row">
+      <div class="col-lg-6">
+        <div>
+          <input type="text" [(ngModel)]="registerDetail.name" placeholder="name" required/>
+        </div>
+        <div>
+          <input type="text" [(ngModel)]="registerDetail.phone" placeholder="phone number" required/>
+        </div>
+
+        <div>
+          <input type="text" [(ngModel)]="registerDetail.email" placeholder="email" required/>
+        </div>
+
       </div>
-      <div>
-        <input type="password" [(ngModel)]="registerDetail.confirmPassword" placeholder="confirm password" />
+
+      <div class="col-lg-6">
+        <div>
+          <input type="password" [(ngModel)]="registerDetail.password" placeholder="password" required/>
+        </div>
+        <div>
+          <input type="password" [(ngModel)]="registerDetail.confirmPassword" placeholder="confirm password" required/>
+        </div>
       </div>
+
+
+    </div>
+    <div class="success_message">
+      {{successMsg}}
+    </div>
+    <div class="error_message">
+      {{errorMsg}}
+    </div>
+    <div>
+      <button type="submit" (click)="generateOTP()">Sign Up</button>
+    </div>
+
+    <div>
+      <a href="login">Already a member? Login</a>
     </div>
   </div>
-  <div>
-    <button type="submit" (click)="register()">Sign Up</button>
+  <div [hidden]="!showOTP">
+    <div class="header">
+      Enter OTP
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="otp" placeholder="" required/>
+    </div>
+    <div class="success_message">
+      {{successMsg}}
+    </div>
+    <div class="error_message">
+      {{errorMsg}}
+    </div>
+    <div>
+      <button type="submit" (click)="confirmOTP()">Confirm OTP</button>
+    </div>
   </div>
 
-  <div>
-    <a href="login">Already a member? Login</a>
-  </div>
+  <div [hidden]="!showSuccess">
+      
+      <div class="success_message">
+        {{successMsg}}
+      </div>
+      <div class="error_message">
+        {{errorMsg}}
+      </div>
+      
+    </div>
 
 </div>
