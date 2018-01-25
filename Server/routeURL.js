@@ -29,6 +29,23 @@ mongoClient.connect('mongodb://localhost:27017/farmersowndb', (err, database)=>{
 
 /* APIs RELATED TO ITEMS*/
 
+
+// Handling an GET request.
+// To retrieve stock of all the items in the DB.
+// Collections used - STOCK.
+router.get('/getCurrentStockDetails', function(req, res){
+    var itemDetails = db.collection('stock');
+    itemDetails.find().toArray(function(err, docs) {
+        var itemArray = [];
+        for(var i = 0; i< docs.length; i++){
+            var itemDetail = docs[i];
+            itemArray.push(itemDetail);
+        }
+        res.send(itemArray);
+    })
+});
+
+
 // Handling an GET request.
 // To retrieve all the items in the DB.
 // Collections used - GET_ITEMS.
@@ -267,34 +284,55 @@ router.get('/getAllDealers', function(req, res){
 });
 
 
-// function to update item stock.
-function updateItemStock(purchaseList){
-    var itemDetails = db.collection('itemDetails');
-    for(var i= 0; i<purchaseList.length; i++){
-        itemDetails.update(
-            {
-                'itemName':purchaseList[i].itemName
-            },
-            {
-                    
-            }
-    )
-    }
-    itemDetails.find().toArray(function(err, docs) {
-        var itemArray = [];
-        
-        for(var i = 0; i< docs.length; i++){
-
-            var itemDetail = docs[i];
-            itemArray.push(itemDetail);
-        }
-        res.send(itemArray);
-    })
-}
-
-
-
 /* APIs RELATED TO DAILY PURCHASE */ 
+
+function updateStock(list){
+    if(list.length>0){
+        var item = list[0];
+        var itemDetails = db.collection('stock');
+        itemDetails.find({'itemName': item.vegetableName}).toArray(function(err, docs) {
+            var itemObject = docs[0];
+            if(itemObject){
+                itemDetails.update(
+                    {
+                        'itemName': item.vegetableName
+                    },
+                    {
+                        itemName: item.vegetableName,
+                        latestPurchasingRate: item.rate,
+                        currentStock : parseInt(itemObject.currentStock) + parseInt(item.quantity)
+                    },
+                    function(err, result) {
+                        if(err){
+                            console.log({msg:"Some error occured while entring the details to DB.", msgCode:210});
+                        }
+                        else{
+                            list.splice(0,1);
+                            updateStock(list);
+                        }
+                    }
+                );
+            }
+            else{
+                itemDetails.insertOne( {
+                    itemName : item.vegetableName,
+                    latestPurchasingRate: item.rate,
+                    currentStock : item.quantity
+                }, function(err, result) {
+                    if(err){
+                        console.log({msg:"Some error occured while entring the details to DB.", msgCode:210});
+                    }
+                    else{
+                        list.splice(0,1);
+                        updateStock(list);
+                        console.log({msg:"Today's Purchase has been added.", msgCode:200});
+                    }
+                });
+            }
+
+        });
+    }
+}
 
 // Handling the POST request to add daily purchase details.
 // Collections used - PURCHASE.
@@ -304,14 +342,22 @@ router.post('/addTodaysPurchase', function(req, res){
 
     Purchase.insertOne( {
         purchaseList : req.body.purchaseList,
-        area : req.body.area,
-        date : req.body.date,
-        totalCost : req.body.totalCost
+        purchaseDate : req.body.purchaseDate,
+        totalPurchaseCost : req.body.totalPurchaseCost,
+        marketName : req.body.marketName
     }, function(err, result) {
-        
+        if(err){
+            res.send({msg:"Some error occured while entring the details to DB.", msgCode:210});
+        }
+        else{
+            res.send({msg:"Today's Purchase has been added.", msgCode:200});
+            var purchaseList = req.body.purchaseList;
+            updateStock(purchaseList);
+            
+        }
     });
-    //updateItemStock( req.body.purchaseList);
-    res.send("New purchase record added");
+    ;
+    
 });
 
 /* APIs RELATED TO ACCOUNTS */ 
@@ -326,13 +372,26 @@ router.post('/login', function(req, res) {
         var userObject = docs[0];
         if(userObject){
             if(userObject.password == req.body.password){
-                var memberDetails = db.collection('memberDetails');
-                memberDetails.find({'email': req.body.username}).toArray(function(err, docs) {
-                    var details = docs[0];
-                    console.log(docs[0]);
-                    res.send({msg: docs[0], msgCode:200});
-                });
-                
+                if(req.body.page && req.body.page === "login"){
+                    if(userObject.loginType && userObject.loginType === "admin"){
+                        var memberDetails = db.collection('memberDetails');
+                        memberDetails.find({'email': req.body.username}).toArray(function(err, docs) {
+                            var details = docs[0];
+                            console.log(docs[0]);
+                            res.send({msg: docs[0], msgCode:200});
+                        });
+                    }
+                    else{
+                        res.send({msg:"You don't have the access.", msgCode:100});
+                    }
+                }else{
+                    var memberDetails = db.collection('memberDetails');
+                    memberDetails.find({'email': req.body.username}).toArray(function(err, docs) {
+                        var details = docs[0];
+                        console.log(docs[0]);
+                        res.send({msg: docs[0], msgCode:200});
+                    });
+                }
             }
             else{
                 res.send({msg:"Please enter a valid credential", msgCode:100});

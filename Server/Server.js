@@ -5,9 +5,6 @@ var bodyParser = require('body-parser');
 /* Used to create the server.*/
 var app = express();
 
-
-
-
 /* To configure body-parser */
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies

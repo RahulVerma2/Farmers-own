@@ -1,0 +1,44 @@
+<div class="items-detail">
+    <header>
+      List of items and its current stock. 
+    </header>
+
+    <div>
+
+    </div>
+
+    <div class="items-list-section">
+        <div class="row header">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-4 item-name">
+                Vegetable Name
+            </div>
+            <div class="col-lg-3">
+                Current Stock
+            </div>
+            <div class="col-lg-4">
+                Last Purchasing Rate
+            </div>
+            
+
+        </div>
+        <div class="row" *ngFor="let item of currentStockList; let i = index">
+            <div class="col-lg-1">
+                {{i+1}}
+            </div>
+            <div class="col-lg-4 item-name">
+                {{item.itemName}}
+            </div>
+            <div class="col-lg-3">
+                {{item.currentStock}}
+            </div>
+            <div class="col-lg-4">
+                Rs. {{item.latestPurchasingRate}}/-
+            </div>
+            
+
+        </div>
+    </div>
+
+</div>

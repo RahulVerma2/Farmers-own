@@ -1,0 +1,21 @@
+.navigation-links{
+    font-size: 22px;
+    margin-left: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navigation-links a{
+    background-color: #aed8f1;
+    padding: 6px;
+    box-shadow: 2px 2px 2px grey;
+    color: black;
+}
+.navigation-links a:hover{
+    box-shadow: none;
+}
+
+.navigation-links a:active{
+    background-color: #003663;
+    color: white;
+}

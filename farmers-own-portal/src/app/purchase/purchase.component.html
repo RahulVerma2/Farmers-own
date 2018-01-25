@@ -1,0 +1,52 @@
+<div class="purchase-detail">
+    <header>
+        Enter Today's Purchase Detail
+    </header>
+    <div class="row extra-details">
+        <div class="col-lg-4 market-name-field">
+            <label for="marketName">Market</label>
+            <input type="text" name="marketName" id="marketName" [(ngModel)]="marketName" placeholder="Enter market name" />
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="purchaseDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 total-cost-label">
+            <label>Total Cost : <span>{{ totalCost }}</span></label>
+        </div>
+
+    </div>
+
+    <div class="purchase-list-section">
+        <div class="row" *ngFor="let item of purchaseList; let i = index">
+            <div class="col-lg-1">
+                {{i+1}}
+            </div>
+            <div class="col-lg-3">
+                <!-- <input type="text" placeholder="Vegetable Name" [(ngModel)]="item.vegetableName" /> -->
+                <mat-select placeholder="Vegetable Name" [(ngModel)]="item.vegetableName">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let vegetable of vegetableList" [value]="vegetable" >{{vegetable}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" placeholder="Quantity" [(ngModel)]="item.quantity" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" placeholder="Rate" [(ngModel)]="item.rate" (blur)="addToTotalCost()"/>
+            </div>
+            <div class="col-lg-2">
+                {{item.quantity * item.rate}}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="button-section">
+        <button (click)="addNewItem()">Add New Item</button>
+        <button (click)="submitVegetablePurchase()">Submit</button>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+.market-name-field{
+    margin-top:15px;
+}
+
+.total-cost-label{
+    margin-top:15px;
+    text-align: right;
+}
+
+.total-cost-label span{
+    color: green;
+    font-size:20px;
+}
+
+.purchase-detail{
+    width:98%;
+    margin:auto;
+    background-color: #eeefed;
+    border:2px solid;
+}
+
+
+.purchase-detail header{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 2px solid;
+    margin-bottom: 20px;
+}
+
+.purchase-detail .extra-details{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.purchase-detail .purchase-list-section .mat-select{
+    display: inline-block;
+    outline: 0;
+    background-color: white;
+    height: 26px;
+    width: 197px;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.purchase-detail button{
+    width: auto;
+    color: black;
+    background-color: #aed8f1;
+    border: none;
+    box-shadow: 2px 2px 2px grey;
+    height: 35px;
+}
+
+.purchase-detail button:hover{
+    box-shadow: none;
+    border:1px solid;
+}
+
+.purchase-detail .button-section{
+    text-align: right;
+    padding: 30px;
+}
+
+.purchase-detail .purchase-list-section{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 98%;
+    margin: auto;
+    border: 1px solid black;
+    background-color: #aed8f1;  
+}
+
+
+.purchase-detail .purchase-list-section .row{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+}
