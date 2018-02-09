@@ -11,7 +11,7 @@ export class PageComponent implements OnInit {
   constructor(private contentServiceService : ContentServiceService) { }
 
   ngOnInit() {
-
+    
   }
 
 }

@@ -43,6 +43,31 @@
     width: max-content;
 }
 
+.header .user-account-options{
+    text-transform: capitalize;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 1px 1px 10px #5a6365;
+    margin: auto;
+    margin-top: 18px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #85c919;
+    padding: 8px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    border: none;
+}
+
+.header .user-account-options .user-icon{
+
+}
+
+.header .user-account-options .user-display-name{
+
+}
+
+
 .header .your-cart-button{
     text-align: center;
     font-size: 18px;

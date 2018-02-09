@@ -23,9 +23,14 @@
 
     <!-- Sign In Option -->
     <div class="col-lg-2">
-      <div class="sign-in-button" [routerLink]="['login']">
+      <div class="sign-in-button" [routerLink]="['login']" [hidden]="isUserSignedIn">
         Sign In
       </div>
+
+      <div [hidden]="!isUserSignedIn" class="user-account-options">
+          <span class="glyphicon glyphicon-user user-icon"></span>
+          <span class="user-display-name">Hi {{displayName}} </span>
+        </div>
      
 
 
