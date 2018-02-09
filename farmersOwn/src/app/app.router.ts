@@ -7,6 +7,8 @@ import { RegisterComponent } from './component/register/register.component';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { TrackOrderComponent } from './component/track-order/track-order.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { FeedbackComponent } from './component/feedback/feedback.component';
 
 const appRoutes: Routes = [
     {
@@ -41,6 +43,14 @@ const appRoutes: Routes = [
     {
         path: 'trackOrder',
         component: TrackOrderComponent
+    },
+    {
+        path: 'aboutUs',
+        component: AboutUsComponent
+    },
+    {
+        path: 'feedback',
+        component: FeedbackComponent
     }
 
     

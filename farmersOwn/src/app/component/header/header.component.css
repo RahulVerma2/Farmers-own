@@ -117,7 +117,7 @@
     border: 1px solid;
 }
 
-.header .navigation-menu-bar div:nth-child(3){
+.header .navigation-menu-bar div:nth-child(5){
     float: right;
     border-right: none;
 }
