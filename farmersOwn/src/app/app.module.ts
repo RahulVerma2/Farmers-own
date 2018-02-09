@@ -6,7 +6,7 @@ import { routes } from './app.router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule, MatFormFieldModule } from '@angular/material';
-import { MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import { MatInputModule, MatOptionModule, MatSelectModule, MatMenuModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { TrackOrderComponent } from './component/track-order/track-order.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AboutUsComponent } from './component/about-us/about-us.component';
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule, 
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [ContentServiceService],
   bootstrap: [AppComponent]

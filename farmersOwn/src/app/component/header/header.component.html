@@ -27,30 +27,30 @@
         Sign In
       </div>
 
-      <div [hidden]="!isUserSignedIn" class="user-account-options">
-          <span class="glyphicon glyphicon-user user-icon"></span>
-          <span class="user-display-name">Hi {{displayName}} </span>
-        </div>
+      <div [hidden]="!isUserSignedIn" class="user-account-options" [matMenuTriggerFor]="menu">
+        <span class="glyphicon glyphicon-user user-icon"></span>
+        <span class="user-display-name">Hi {{displayName}} </span>
+      </div>
      
-
-
-
-
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>My Accounts</button>
+        <button mat-menu-item><span class="glyphicon glyphicon-exit"></span>Sign Out</button>
+      </mat-menu>
     </div>
 
   </div>
 
   <!-- Navigation Menu -->
-  <div class="navigation-menu-bar"> 
-     <div>
-        <span [routerLink]="['content']">Vegetable List</span>
-      </div> 
-      
-      <div>
-          <span [routerLink]="['trackOrder']">Track Orders</span>
-      </div>
-      <div>
-          <span [routerLink]="['cart']">Your Cart <span class="glyphicon glyphicon-shopping-cart"></span></span> 
-      </div>
+  <div class="navigation-menu-bar">
+    <div>
+      <span [routerLink]="['content']">Vegetable List</span>
+    </div>
+
+    <div>
+      <span [routerLink]="['trackOrder']">Track Orders</span>
+    </div>
+    <div>
+      <span [routerLink]="['cart']">Your Cart <span class="glyphicon glyphicon-shopping-cart"></span></span>
+    </div>
   </div>
 </div>

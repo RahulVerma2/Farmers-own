@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body{
     font-size:13px;
     font-family : "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -43,3 +46,18 @@ body{
 .sprite.Snake_Gourd { background-position: 0 -2500px; height: 79px; } 
 .sprite.Spinach { background-position: 0 -2589px; height: 136px; margin-top: -24px;} 
 .sprite.Tomato { background-position: 0 -2735px; height: 88px; } 
+
+.mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    background-color: #a7d75c;
+}
+.mat-menu-item {
+   border:0px !important;
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 1px solid #ffffff !important;
+}
+.mat-menu-item:nth-last-child(){
+    border:0px;
+}
