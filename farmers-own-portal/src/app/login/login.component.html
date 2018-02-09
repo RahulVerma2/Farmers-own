@@ -1,22 +1,24 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <!-- Username -->
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" [formControl]="username" placeholder="Enter username"/>
-  </div>
+<div class="login-page">
 
-  <!-- Password -->
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" [formControl]="password" placeholder="Enter Password"/>
-  </div>
+  <header>
+    Farmer's Own Portal
+  </header>
 
-  <div>
-      <label>{{msg}}</label>
-  </div>
-   
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-container">
+    <!-- Username -->
+    <div>
+      <input type="password" name="username" id="username" [formControl]="username" placeholder="Username" />
+    </div>
+
+    <!-- Password -->
+    <div>
+      <input type="password" name="password" id="password" [formControl]="password" placeholder="Password" />
+    </div>
     
-
-  <button type="submit">Login</button> 
-  <button type="button">Reset</button> 
-</form>
+    <div>
+      
+      <button type="submit">Login</button>
+    </div>
+    <label class="error-msg">{{msg}}</label>
+  </form>
+</div>

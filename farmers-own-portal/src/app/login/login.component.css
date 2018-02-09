@@ -1,0 +1,32 @@
+.login-page header{
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.login-page .login-container{
+    width: 36%;
+    margin: auto;
+    margin-top: 75px;
+    text-align: center;
+    border: 2px solid;
+    padding: 30px;
+    background-color: wheat;
+}
+ 
+.login-page .login-container div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.login-page .login-container input{
+    text-align: center;
+    height: 40px;
+    font-size: 20px;
+    box-shadow: 1px 1px 7px grey inset;
+}
+
+.login-page .login-container .error-msg{
+    color: red;
+}
+

@@ -15,7 +15,6 @@ export class ContentComponent implements OnInit {
   constructor(private contentServiceService: ContentServiceService) { }
 
   ngOnInit() {
-    debugger;
     if(this.contentServiceService.getVegetableList().length == 0){
       this.contentServiceService.getItemList().subscribe( res =>{
         this.vegetableList = res;

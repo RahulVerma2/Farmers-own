@@ -37,15 +37,15 @@
 
   <!-- Navigation Menu -->
   <div class="navigation-menu-bar"> 
-     <div [routerLink]="['content']">
-       Vegetable List
+     <div>
+        <span [routerLink]="['content']">Vegetable List</span>
       </div> 
       
-      <div  [routerLink]="['trackOrder']">
-          Track Orders
+      <div>
+          <span [routerLink]="['trackOrder']">Track Orders</span>
       </div>
-      <div [routerLink]="['cart']">
-          <span>Your Cart</span> <span class="glyphicon glyphicon-shopping-cart"></span>
+      <div>
+          <span [routerLink]="['cart']">Your Cart <span class="glyphicon glyphicon-shopping-cart"></span></span> 
       </div>
   </div>
 </div>

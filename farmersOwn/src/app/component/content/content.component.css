@@ -1,5 +1,5 @@
 .menu-section{
-    border-left: 1px solid #e5e3e3;
+    border-left: 1px solid #00000033;
 }
 
 .sorting-section{
@@ -12,11 +12,16 @@
 }
 
 .menu-section .information{
-    text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 20px;
-    text-transform: uppercase;
     color: #0b6db8;
+}
+
+.search-box-container input{
+    height: 32px;
+    border: 1px solid #d3d3d3;
+    border-radius: 2px;
+    padding-left: 15px;
 }
 
 .vegetable-detail div{
@@ -43,15 +48,18 @@
 
 .qty-section input{
     width: 70px;
-    box-shadow: 0px 2px 6px grey inset;
     text-align: center;
     font-weight: bold;
     float: right;
+    background-color: #f6f6f6;
+    border: 1px solid #e5e1e1;
 }
 
 mat-card{
     background: #fff;
     margin-bottom:30px;
+    box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
+    border: 1px solid #00000033;
 }
 
 mat-card-actions{

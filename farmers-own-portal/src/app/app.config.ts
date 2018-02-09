@@ -1,6 +1,6 @@
 
 export class AppSettings {
-    public static API_ENDPOINT='http://localhost:3000/';
+    public static API_ENDPOINT='http://ec2-18-216-71-240.us-east-2.compute.amazonaws.com:3000/';
     public static vegetableList = [
         'Ginger', 'Garlic', 'Curry Leaves', 'Dhania', 'Lemon', 'Methi', 'Red Radish', 'Pumpkin',
         'Pudina', 'snake Gourd', 'Brinjal(Long)', 'Brinjal(Small)', 'Potato', 'Onion', 'Tomato', 

@@ -1,7 +1,7 @@
 <!-- Navigation Menu -->
 
 
-<div class="">
+<div class="row" style="margin-left:0px;margin-right:0px;">
 
   <!-- Sorting Menu Section -->
   <div class="col-lg-2">
@@ -9,8 +9,8 @@
 
 
       <!-- Search text box -->
-      <div>
-        <input type="text" placeholder="Search Vegetable" [(ngModel)]="searchKeyword" />
+      <div class="search-box-container">
+        <input type="text" placeholder="Search vegetable..." [(ngModel)]="searchKeyword" />
       </div>
 
       <!-- Checkbox for Vegetable option -->
@@ -43,8 +43,8 @@
   <!-- Menu Section -->
   <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 menu-section">
       <div class="information">
-        The rate given below are of today's date. the actual rate will be given when your order is delivered.
-         Actual rates might differ from the rates given below.  
+        <b>Please Note</b> : The rate given below are of today's date. the actual rate will be given when your order is delivered.
+         <b>Actual rates might differ from the rates given below.</b>  
         </div>
     <div class="row">
       <div *ngFor="let vegetable of vegetableList; let i = index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -80,7 +80,7 @@
                 <!-- <mat-form-field class="example-full-width">
                     <textarea matInput placeholder="Qty"  [(ngModel)]="vegetable.itemQty"></textarea>
                   </mat-form-field> -->
-                <input type="text" [(ngModel)]="vegetable.itemQty" />
+                <input type="number" [(ngModel)]="vegetable.itemQty" />
               </div>
 
               <!-- Cost Section -->

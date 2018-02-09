@@ -6,7 +6,7 @@ import { routes } from './app.router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule, MatFormFieldModule } from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { OrderConfirmationComponent } from './component/order-confirmation/order
 import { RegisterComponent } from './component/register/register.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { TrackOrderComponent } from './component/track-order/track-order.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     RegisterComponent,
     ForgotPasswordComponent,
     TrackOrderComponent,
+    AboutUsComponent,
    
   ],
   imports: [
@@ -48,7 +50,9 @@ import { TrackOrderComponent } from './component/track-order/track-order.compone
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatOptionModule, 
+    MatSelectModule
   ],
   providers: [ContentServiceService],
   bootstrap: [AppComponent]

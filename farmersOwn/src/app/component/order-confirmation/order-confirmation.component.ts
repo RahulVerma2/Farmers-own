@@ -3,6 +3,7 @@ import {ContentServiceService} from '../../service/content-service.service'
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
+import { AppSettings } from '../../app.config';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -11,14 +12,22 @@ import {Router} from '@angular/router';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  addressDetail = {};
+  addressDetail = {
+    "city" : "Hyderabad",
+    "state" : "Telangana"
+  };
+
+  areaList : Array<string>;
+
 
   constructor(private contentServiceService: ContentServiceService, private http: Http, private router: Router) { }
 
   ngOnInit() {
+    this.areaList = AppSettings.areaNameList;
   }
 
   placeOrder(){
+
     var userDetail = JSON.parse(localStorage.getItem("userDetail"));
     userDetail.itemList = this.contentServiceService.getCartList();
     userDetail.address = [];
