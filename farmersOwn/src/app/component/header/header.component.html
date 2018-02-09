@@ -34,7 +34,7 @@
      
       <mat-menu #menu="matMenu">
         <button mat-menu-item>My Accounts</button>
-        <button mat-menu-item><span class="glyphicon glyphicon-exit"></span>Sign Out</button>
+        <button mat-menu-item (click)="signOut()"> <span class="glyphicon glyphicon-exit" ></span>Sign Out</button>
       </mat-menu>
     </div>
 

@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
   this.login(this.username, this.password).subscribe(response => {
     if(response.msgCode === 200){
       localStorage.setItem("userDetail",JSON.stringify(response.msg));
-      this.errorMsg = ""
+      this.errorMsg = "";
       this.router.navigateByUrl("content");
+      window.location.reload();
     }
     else{
       this.errorMsg = response.msg

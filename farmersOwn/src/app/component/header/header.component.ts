@@ -12,6 +12,10 @@ export class HeaderComponent implements OnInit {
   userDetail : object ={};
   displayName: string;
   ngOnInit() {
+    this.checkIfUserLoggedin();
+  }
+
+  checkIfUserLoggedin(){
     var userDetail = JSON.parse(localStorage.getItem("userDetail"));
     if(userDetail == null){
       this.isUserSignedIn = false;
@@ -21,6 +25,11 @@ export class HeaderComponent implements OnInit {
       this.userDetail = userDetail;
       this.displayName = userDetail.name.split(" ")[0];
     }
+  }
+
+  signOut(){
+    localStorage.removeItem("userDetail");
+    window.location.reload();
   }
 
 }
