@@ -42,7 +42,10 @@ export class ContentComponent implements OnInit {
   }
   
   addToCart(vegetable){
-    this.contentServiceService.addToCart(vegetable);
+    if(vegetable.itemQty){
+      this.contentServiceService.addToCart(vegetable);
+    }
+    
   }
 
   removeItemFromCartList(vegetable){

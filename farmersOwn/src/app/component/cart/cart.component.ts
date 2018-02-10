@@ -16,13 +16,16 @@ export class CartComponent implements OnInit {
   constructor(private contentServiceService: ContentServiceService, private router: Router) { }
 
   proceedToCheckout(){
-    var currentUser = this.contentServiceService.proceedToCheckout();
-    if(currentUser){
-      this.router.navigateByUrl('/orderConfirmation');
+    if(this.totalAmount){
+      var currentUser = this.contentServiceService.proceedToCheckout();
+      if(currentUser){
+        this.router.navigateByUrl('/orderConfirmation');
+      }
+      else{
+        this.router.navigateByUrl('/login');
+      }
     }
-    else{
-      this.router.navigateByUrl('/login');
-    }
+    
   }
   
   ngOnInit() {
